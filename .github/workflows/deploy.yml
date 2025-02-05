@@ -29,8 +29,6 @@ jobs:
             git config --global --add safe.directory /home/ubuntu/hello-world &&
             cd /home/ubuntu/hello-world &&
             git pull &&
-            newgrp docker <<EOF &&
-            docker build -t sampleapp . &&
-            docker run -d --name myapp_container -p 8080:80 sampleapp
-            EOF
+            sudo docker build -t sampleapp . &&
+            sudo docker run -d --name myapp_container -p 8080:80 sampleapp
           "
