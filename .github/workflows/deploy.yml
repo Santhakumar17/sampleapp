@@ -24,3 +24,6 @@ jobs:
         USER: "ubuntu"
       run: |
         ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "cd /home/ubuntu/sampleapp && git pull && docker-compose up -d"
+
+
+        
