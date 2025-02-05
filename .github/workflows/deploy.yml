@@ -23,7 +23,7 @@ jobs:
         EC2_HOST: "184.73.16.42"
         USER: "ubuntu"
       run: |
-        ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "cd /home/ubuntu/sampleapp && git pull && docker-compose up -d"
+        ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "cd /home/ubuntu/hello-world && git pull && docker-compose up -d"
 
 
         
