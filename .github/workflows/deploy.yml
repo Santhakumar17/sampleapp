@@ -10,20 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Start SSH Agent
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.EC2_PRIVATE_KEY }}
+      - name: Start SSH Agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_PRIVATE_KEY }}
 
-    - name: Deploy to EC2
-      env:
-        EC2_HOST: "184.73.16.42"
-        USER: "ubuntu"
-      run: |
-        ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "cd /home/ubuntu/hello-world && git pull && docker-compose up -d"
-
-
-        
+      - name: Deploy to EC2
+        env:
+          EC2_HOST: "184.73.16.42"
+          USER: "ubuntu"
+        run: |
+          ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "
+            git config --global --add safe.directory /home/ubuntu/hello-world &&
+            cd /home/ubuntu/hello-world &&
+            git pull &&
+            docker-compose up -d
+          "
