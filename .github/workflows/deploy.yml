@@ -26,10 +26,11 @@ jobs:
           ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "
             sudo chown -R $USER:$USER /home/ubuntu/hello-world &&
             sudo usermod -aG docker $USER &&
-            newgrp docker &&
             git config --global --add safe.directory /home/ubuntu/hello-world &&
             cd /home/ubuntu/hello-world &&
             git pull &&
+            newgrp docker <<EOF &&
             docker build -t sampleapp . &&
             docker run -d --name myapp_container -p 8080:80 sampleapp
+            EOF
           "
