@@ -20,7 +20,7 @@ jobs:
 
     - name: Deploy to EC2
       env:
-        EC2_HOST: "your-ec2-public-ip"
+        EC2_HOST: "184.73.16.42"
         USER: "ubuntu"
       run: |
         ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "cd /home/ubuntu/sampleapp && git pull && docker-compose up -d"
