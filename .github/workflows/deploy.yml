@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to EC2
         env:
-          EC2_HOST: "184.73.16.42"
+          EC2_HOST: "3.82.37.91"
           USER: "ubuntu"
         run: |
           ssh -o StrictHostKeyChecking=no $USER@$EC2_HOST "
